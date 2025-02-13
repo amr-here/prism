@@ -1,13 +1,15 @@
 {
-  "name": "threejs-journey-exercise",
+  "name": "Moengage 3d",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "vite": "^5.3.3",
     "vite-plugin-restart": "^0.4.1"
   },
