@@ -38,7 +38,7 @@ const Params = {
 };
 
 objLoader.load(
-    '/models/prism.obj',
+    '/prism/models/prism.obj',
     function (loadedObject) {
         obj = loadedObject;
 
@@ -220,7 +220,7 @@ const floor = new THREE.Mesh(
 )
 floor.receiveShadow = true
 floor.rotation.x = - Math.PI * 0.5
-scene.add(floor)
+// scene.add(floor)
 
 /**
  * Lights
