@@ -226,45 +226,49 @@ floor.rotation.x = - Math.PI * 0.5
  * Lights
  */
 
+const lightsGroup = new THREE.Group();
+
+scene.add(lightsGroup);
 
 const directionalLight1 = new THREE.DirectionalLight('rgb(0,0,81)', 1.8);
 directionalLight1.position.set(5, 5, 5);
 directionalLight1.castShadow = true; // enable shadow for demonstration
 scene.add(directionalLight1);
 const helper1 = new THREE.DirectionalLightHelper(directionalLight1);
-scene.add(helper1);
+
 
 const directionalLight2 = new THREE.DirectionalLight('rgb(0,0,81)', 5);
 directionalLight2.position.set(-2, 1, -4);
 scene.add(directionalLight2);
 const helper2 = new THREE.DirectionalLightHelper(directionalLight2);
-scene.add(helper2);
+
 
 const directionalLight3 = new THREE.DirectionalLight('rgb(255,255,255)', 2);
 // Corrected color string; removed the stray "x"
 directionalLight3.position.set(0, -5, -3);
 scene.add(directionalLight3);
 const helper3 = new THREE.DirectionalLightHelper(directionalLight3);
-scene.add(helper3);
+
 
 const directionalLight4 = new THREE.DirectionalLight('rgb(0,0,81)', 0.5);
 directionalLight4.position.set(6, 2, -3);
 scene.add(directionalLight4);
 const helper4 = new THREE.DirectionalLightHelper(directionalLight4);
-scene.add(helper4);
+
 
 const directionalLight5 = new THREE.DirectionalLight('rgb(0,0,81)', 0.1);
 directionalLight5.position.set(-3, 2, 5);
 scene.add(directionalLight5);
 const helper5 = new THREE.DirectionalLightHelper(directionalLight5);
-scene.add(helper5);
+
 
 const directionalLight6 = new THREE.DirectionalLight('rgb(0,0,81)', 0.1);
 // Corrected color string; removed extra parenthesis
 directionalLight6.position.set(-7, 6, 5);
 scene.add(directionalLight6);
 const helper6 = new THREE.DirectionalLightHelper(directionalLight6);
-scene.add(helper6);
+
+lightsGroup.add(directionalLight1,directionalLight2,directionalLight3,directionalLight4,directionalLight5,directionalLight6);
 
 const lights = [
     { light: directionalLight1, name: 'Directional Light 1' },
@@ -346,6 +350,8 @@ let previousTime = 0
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - previousTime
+    lightsGroup.rotation.y = Math.sin(elapsedTime * 0.5) * 0.8;
+    lightsGroup.rotation.x = Math.cos(elapsedTime * 0.1) * 0.2;
     previousTime = elapsedTime
 
     // Update controls
